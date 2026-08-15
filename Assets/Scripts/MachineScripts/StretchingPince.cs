@@ -14,10 +14,9 @@ public class stretchingPince : MonoBehaviour
     [SerializeField] private float descenteSpeed = 5f;
 
 
-    [SerializeField] private MovementScript left;
-    [SerializeField] private MovementScript right;
-
-    [SerializeField] private ButtonState scriptButtonState;
+    [SerializeField] private GameObject leftButton;
+    [SerializeField] private GameObject rightButton;
+    [SerializeField] private GameObject bigButton;
 
     public bool isRemonte = true;
 
@@ -25,15 +24,15 @@ public class stretchingPince : MonoBehaviour
 
     private void Update()
     {
-        if (scriptButtonState.IsPressed == true && isRemonte == true)
+        if (bigButton.GetComponent<ButtonState>().IsPressed && isRemonte == true)
         {
             isRemonte = false;
             initialPincePosition = pince.transform.position.y;
             Debug.Log("biggg");
             lineRenderer.enabled = true;
 
-            left.enabled = false;
-            right.enabled = false;
+            leftButton.GetComponent<ButtonState>().enabled = false;
+            rightButton.GetComponent<ButtonState>().enabled = false;
 
 
             StartCoroutine(DescenteCoroutine());
@@ -66,8 +65,8 @@ public class stretchingPince : MonoBehaviour
             yield return null;
         }
 
-        left.enabled = true;
-        right.enabled = true;
+        leftButton.GetComponent<ButtonState>().enabled = true;
+        rightButton.GetComponent<ButtonState>().enabled = true;
         lineRenderer.enabled = false;
         isRemonte = true;
 

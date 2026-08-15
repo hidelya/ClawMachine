@@ -9,7 +9,8 @@ public class ButtonState : MonoBehaviour
         Right,
         Big
     }
-    
+
+    [SerializeField] private button buttonType;
     public bool isSurvol = false;
     public bool IsPressed { get; set; } = false;
 
@@ -27,7 +28,7 @@ public class ButtonState : MonoBehaviour
 
     public void Update()
     {
-        if (isSurvol == true)
+        if (isSurvol == true && buttonType == button.Big)
         {
             if (Mouse.current.leftButton.wasPressedThisFrame)
             {
@@ -38,6 +39,17 @@ public class ButtonState : MonoBehaviour
             }
             else { IsPressed = false; }
 
+        }
+        if (isSurvol == true && buttonType == button.Left || buttonType == button.Right)
+        {
+            if (Mouse.current.leftButton.isPressed)
+            {
+                IsPressed = true;
+
+                Debug.Log("pressed");
+
+            }
+            else { IsPressed = false; }
 
         }
     }

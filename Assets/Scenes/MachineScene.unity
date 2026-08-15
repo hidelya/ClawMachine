@@ -169,7 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c96eb12407b7ee478ceabe0f2aca583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovementPince
-  position: 0
+  leftButton: {fileID: 929868824}
+  rightButton: {fileID: 1043493056}
   pince: {fileID: 6419268}
   speed: 5
   minX: -8
@@ -328,8 +329,8 @@ MonoBehaviour:
   lineRenderer: {fileID: 6419271}
   descenteMax: 6
   descenteSpeed: 6.1
-  left: {fileID: 929868828}
-  right: {fileID: 1043493060}
+  left: {fileID: 0}
+  right: {fileID: 0}
   scriptButtonState: {fileID: 1858757573}
   isRemonte: 1
 --- !u!1 &132174499
@@ -1665,6 +1666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba6472a6099ca948943bac94f0f95a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonState
+  buttonType: 0
   isSurvol: 0
 --- !u!61 &929868827
 BoxCollider2D:
@@ -1721,14 +1723,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 929868824}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c96eb12407b7ee478ceabe0f2aca583, type: 3}
+  m_Script: {fileID: 11500000, guid: bba6472a6099ca948943bac94f0f95a5, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::movementScript
-  position: 0
-  pince: {fileID: 6419268}
-  speed: 5
-  minX: -5
-  maxX: 5
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonState
+  buttonType: 0
+  isSurvol: 0
 --- !u!1 &1043493056
 GameObject:
   m_ObjectHideFlags: 0
@@ -1776,6 +1775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba6472a6099ca948943bac94f0f95a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonState
+  buttonType: 0
   isSurvol: 0
 --- !u!61 &1043493059
 BoxCollider2D:
@@ -1832,14 +1832,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1043493056}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c96eb12407b7ee478ceabe0f2aca583, type: 3}
+  m_Script: {fileID: 11500000, guid: bba6472a6099ca948943bac94f0f95a5, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::movementScript
-  position: 1
-  pince: {fileID: 6419268}
-  speed: 5
-  minX: -5
-  maxX: 5
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonState
+  buttonType: 1
+  isSurvol: 0
 --- !u!1 &1171036547
 GameObject:
   m_ObjectHideFlags: 0
@@ -2214,6 +2211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bba6472a6099ca948943bac94f0f95a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonState
+  buttonType: 2
   isSurvol: 0
 --- !u!58 &1858757574
 CircleCollider2D:
