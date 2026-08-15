@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Hook
   - Pince
+  - Ball
   layers:
   - Default
   - TransparentFX
