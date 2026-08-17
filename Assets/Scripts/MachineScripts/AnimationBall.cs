@@ -9,14 +9,16 @@ public class AnimationBall : MonoBehaviour
     private stretchingPince scriptStretchingPince;
     [SerializeField] private float speed = 1f;
     [SerializeField] private GameObject center;
+    [SerializeField] private StateMachine stateMachineScript;
 
 
     private void Update()
     {
         attachedBall = pince.GetComponent<ObjectToPickUp>(); // Balle attaché à la pince
         scriptStretchingPince = ControllerRail.GetComponent<stretchingPince>();
-        if (attachedBall.ballPick != null && scriptStretchingPince.isRemonte == true)
+        if (attachedBall.ballPick != null && stateMachineScript.currentState == StateMachine.State.CheckingReward)
         {
+            
             pince.GetComponent<FixedJoint2D>().enabled = false;
 
             Rigidbody2D rb = attachedBall.ballPick.GetComponent<Rigidbody2D>();

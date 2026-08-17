@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class MovementScript : MonoBehaviour
+public class MovementPince : MonoBehaviour
 {
 
     [SerializeField] private GameObject leftButton;
