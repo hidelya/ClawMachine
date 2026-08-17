@@ -4,10 +4,15 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     [SerializeField] private GameObject buttonCoin;
-    [SerializeField] private int playerCoins = 100;
+    private int playerCoins { get; set; } = 500; 
+    private int lvlLuck { get; set; } = 1;
+
+    private int lvlPrice { get; set; } = 50;
 
     [SerializeField] private TextMeshProUGUI coinText;
-   
+    
+    [SerializeField] TextMeshProUGUI textLuck;
+
     public void AddCoins(int amount)
     {
         playerCoins += amount;
@@ -29,4 +34,31 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    public void AddLuck()
+    {
+        if (playerCoins >= lvlPrice)
+        {
+            
+            switch (lvlLuck) 
+            {
+                case 1:
+                    lvlLuck += 1;
+                    textLuck.text = "Luck level " + lvlLuck.ToString();
+                    RemoveCoins(lvlPrice);
+                    break;
+
+                case 2:
+                    lvlLuck += 1;
+                    lvlPrice = 200;
+                    textLuck.text = "Luck level " + lvlLuck.ToString();
+                    RemoveCoins(lvlPrice);
+                    break;
+
+                default:
+                    Debug.Log("Aucun niveau trouvé");
+                    break;
+            }
+
+        }
+    }
 }
