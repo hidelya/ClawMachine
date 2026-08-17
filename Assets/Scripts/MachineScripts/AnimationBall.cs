@@ -5,31 +5,39 @@ public class AnimationBall : MonoBehaviour
 {
     [SerializeField] private GameObject pince;
     [SerializeField] private GameObject ControllerRail;
-    private ObjectToPickUp attachedBall;
+    public ObjectToPickUp attachedBall;
     private stretchingPince scriptStretchingPince;
     [SerializeField] private float speed = 1f;
     [SerializeField] private GameObject center;
     [SerializeField] private StateMachine stateMachineScript;
+    public bool isAnimationFinished = false;
 
 
-    private void Update()
+    public void StartAnimation()
     {
+        isAnimationFinished = false;
         attachedBall = pince.GetComponent<ObjectToPickUp>(); // Balle attaché à la pince
         scriptStretchingPince = ControllerRail.GetComponent<stretchingPince>();
-        if (attachedBall.ballPick != null && stateMachineScript.currentState == StateMachine.State.CheckingReward)
+        Vector3 ciblePosition = center.transform.position;
+        if (attachedBall.ballPick != null && !isAnimationFinished)
         {
-            
             pince.GetComponent<FixedJoint2D>().enabled = false;
-
             Rigidbody2D rb = attachedBall.ballPick.GetComponent<Rigidbody2D>();
             rb.bodyType = RigidbodyType2D.Static;
-            Vector3 ciblePosition = center.transform.position; // Position de la cible (centre)
+            // Position de la cible (centre)
+            Debug.Log("Avant la coroutine");
             StartCoroutine(DeplacerVersCible(ciblePosition));
+            Debug.Log("Après la coroutine");
             StartCoroutine(DepopBall(attachedBall.ballPick));
+            
+            
 
         }
+        else
+        {
+            Debug.Log("No ball attached to the pince.");
+        }
     }
-
     IEnumerator DeplacerVersCible(Vector3 ciblePosition)
     {
 
@@ -41,8 +49,10 @@ public class AnimationBall : MonoBehaviour
 
             yield return null;
         }
+        isAnimationFinished = true;
+        yield return null;
 
-        attachedBall.ballPick.transform.position = ciblePosition;
+        //attachedBall.ballPick.transform.position = ciblePosition;
 
     }
 
@@ -50,5 +60,8 @@ public class AnimationBall : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         attachedBall.ballPick.SetActive(false);
+        isAnimationFinished = true;
+        Debug.Log("Animation finished, ball deactivated");
+        
     }
 }

@@ -7,10 +7,12 @@ public class ButtonState : MonoBehaviour
     {
         Left,
         Right,
-        Big
+        Big,
+        AddCoinOnMachine,
     }
 
-    [SerializeField] private button buttonType;
+    
+    public button buttonType;
     public bool isSurvol = false;
     public bool IsPressed { get; set; } = false;
 
@@ -28,21 +30,21 @@ public class ButtonState : MonoBehaviour
 
     public void Update()
     {
-        if (isSurvol == true && buttonType == button.Big)
+        if (isSurvol && (buttonType == button.AddCoinOnMachine || buttonType == button.Big))
+
         {
-            if (Mouse.current.leftButton.wasPressedThisFrame)
+            if (Mouse.current.leftButton.wasPressedThisFrame )
             {
                 IsPressed = true;
-
                 Debug.Log("pressed");
 
             }
             else { IsPressed = false; }
 
         }
-        if (isSurvol == true && buttonType == button.Left || buttonType == button.Right)
+        if (isSurvol && (buttonType == button.Left || buttonType == button.Right))
         {
-            if (Mouse.current.leftButton.isPressed)
+            if (Mouse.current.leftButton.isPressed )
             {
                 IsPressed = true;
 

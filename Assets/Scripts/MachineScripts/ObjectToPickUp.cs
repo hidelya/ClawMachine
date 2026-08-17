@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ObjectToPickUp : MonoBehaviour // script attaché à la pince pour attraper la balle
 {
-    private bool isAttached = false;
+    public bool isAttached { get; set; } = false;
     [SerializeField] private FixedJoint2D joint;
     public GameObject ballPick;
     [SerializeField] private StateMachine stateMachineScript;
@@ -13,7 +13,6 @@ public class ObjectToPickUp : MonoBehaviour // script attaché à la pince pour at
 
         if (collision.gameObject.CompareTag("Ball") && isAttached == false)
         {
-            stateMachineScript.currentState = StateMachine.State.Grabbing;
             Debug.Log("Touche la pince");
             Attached(collision);
             ballPick = collision.gameObject;
