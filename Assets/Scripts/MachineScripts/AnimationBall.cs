@@ -65,7 +65,7 @@ public class AnimationBall : MonoBehaviour
     IEnumerator DepopBall(GameObject ballActuelle)
     {
         yield return new WaitForSeconds(1.5f);
-        attachedBall.ballPick.SetActive(false);
+        Destroy(ballActuelle);
         isAnimationFinished = true;
         Debug.Log("Animation finished, ball deactivated");
 

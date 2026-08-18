@@ -16,6 +16,13 @@ public class BallSpawner : MonoBehaviour
         RandomColor(newBall);
     }
 
+    public void SpawnBall(Vector3 spawnPosition)
+    {
+        GameObject newBall = Instantiate(ballPrefab, spawnPosition, Quaternion.identity);
+        spawnedBalls.Add(newBall);
+        RandomColor(newBall);
+    }
+
     public void RandomColor(GameObject ball)
     {
         float pourcentRarety = 0.95f;

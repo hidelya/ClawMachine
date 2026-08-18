@@ -14,7 +14,7 @@ public class StateMachine : MonoBehaviour
     [SerializeField] private GameObject buttonCoin;
     [SerializeField] private GameObject bigButton;
 
-    private bool isPricedBall = false;
+    private bool isFirstBallInstanciated = false;
 
     public enum State
     {
@@ -34,8 +34,16 @@ public class StateMachine : MonoBehaviour
                 stretchingScript.enabled = false;
                 objectToPickUpScript.isAttached = false;
                 stretchingScript.isDown = false;
+                if (isFirstBallInstanciated == false)
+                {
+                    ballSpawnerScript.SpawnBall(new Vector3(-4, 1, 0));
+                    ballSpawnerScript.SpawnBall(new Vector3(0, 1, 0));
+                    ballSpawnerScript.SpawnBall(new Vector3(4, 1, 0));
 
-
+                    isFirstBallInstanciated = true;
+                }
+                
+                
                 if (buttonCoin.GetComponent<ButtonState>().IsPressed)
                 {
                     Debug.Log("Coin inserted, moving to Moving state");
@@ -78,12 +86,11 @@ public class StateMachine : MonoBehaviour
                 {
 
                     animationBallScript.PriceBall(ballPicked);
-
                     ballSpawnerScript.SpawnBall();
                     currentState = State.WaitingForCoin;
-                    
+
                 }
-                
+
 
 
                 break;
