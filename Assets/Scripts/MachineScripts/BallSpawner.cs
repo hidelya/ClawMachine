@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class BallSpawner : MonoBehaviour
 {
@@ -13,12 +14,16 @@ public class BallSpawner : MonoBehaviour
     {
         GameObject newBall = Instantiate(ballPrefab, position, Quaternion.identity);
         spawnedBalls.Add(newBall);
+        newBall.GetComponent<Collider2D>().enabled = false;
         RandomColor(newBall);
+        StartCoroutine(AddTag(newBall));
+
     }
 
     public void SpawnBall(Vector3 spawnPosition)
     {
         GameObject newBall = Instantiate(ballPrefab, spawnPosition, Quaternion.identity);
+
         spawnedBalls.Add(newBall);
         RandomColor(newBall);
     }
@@ -45,10 +50,16 @@ public class BallSpawner : MonoBehaviour
                 break;
         }
         Color colorRarety = Random.value < pourcentRarety ? Color.blue : Color.red;
-        ball.GetComponent<Renderer>().material.color = colorRarety;
+        ball.GetComponentInChildren<Renderer>().material.color = colorRarety;
 
     }
 
-   
+    IEnumerator AddTag(GameObject newBall)
+    {
+        yield return new WaitForSeconds(1f);
+        newBall.GetComponent<Collider2D>().enabled = true;
+       
+        
+    }
 
 }

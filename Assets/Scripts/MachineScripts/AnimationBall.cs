@@ -50,7 +50,7 @@ public class AnimationBall : MonoBehaviour
         {
 
             attachedBall.ballPick.transform.position = Vector3.MoveTowards(attachedBall.ballPick.transform.position, ciblePosition, speed * Time.deltaTime);
-            attachedBall.ballPick.transform.localScale = Vector3.MoveTowards(attachedBall.ballPick.transform.localScale, new Vector3(5f, 5f, 5f), speed * Time.deltaTime);
+            attachedBall.ballPick.transform.localScale = Vector3.MoveTowards(attachedBall.ballPick.transform.localScale, new Vector3(2,2,2), speed * Time.deltaTime);
 
             yield return null;
         }
@@ -74,7 +74,7 @@ public class AnimationBall : MonoBehaviour
 
     public void PriceBall(GameObject ballActuelle)
     {
-        Color color = ballActuelle.GetComponent<Renderer>().material.color;
+        Color color = ballActuelle.GetComponentInChildren<Renderer>().material.color;
         if (ballActuelle)
         {
             if (color == Color.blue)

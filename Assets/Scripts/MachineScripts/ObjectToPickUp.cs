@@ -32,6 +32,7 @@ public class ObjectToPickUp : MonoBehaviour // script attaché à la pince pour at
         Debug.Log(joint.connectedBody);
         Debug.Log(gameObject.name + " a été attrapé !");
         
+
     }
 
    
