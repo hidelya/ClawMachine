@@ -38,7 +38,7 @@ public class PlayerStats : MonoBehaviour
     {
         if (playerCoins >= lvlPrice)
         {
-            
+
             switch (lvlLuck) 
             {
                 case 1:

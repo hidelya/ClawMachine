@@ -13,6 +13,8 @@ public class AnimationBall : MonoBehaviour
     public bool isAnimationFinished = false;
 
 
+
+
     public void StartAnimation()
     {
         isAnimationFinished = false;

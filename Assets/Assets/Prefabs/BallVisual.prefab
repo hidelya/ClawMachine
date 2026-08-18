@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5175999165941677092}
   - component: {fileID: 2173132902329311196}
   - component: {fileID: 290032419879841931}
-  - component: {fileID: 8008508879607854376}
   m_Layer: 0
   m_Name: BallVisual
   m_TagString: Ball
@@ -158,19 +157,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8008508879607854376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8985950701660481759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb18fd8f2f82bea48bfcdd2fa538ae54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AnimationBall
-  pince: {fileID: 0}
-  ControllerRail: {fileID: 0}
-  speed: 0.5
-  center: {fileID: 0}

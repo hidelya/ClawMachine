@@ -8,8 +8,9 @@ public class StateMachine : MonoBehaviour
     [SerializeField] private AnimationBall animationBallScript;
     [SerializeField] private PlayerStats playerStatsScript;
     [SerializeField] private ObjectToPickUp objectToPickUpScript;
+    [SerializeField] private BallSpawner ballSpawnerScript;
 
-
+    [SerializeField] private GameObject ballPicked;
     [SerializeField] private GameObject buttonCoin;
     [SerializeField] private GameObject bigButton;
 
@@ -67,11 +68,13 @@ public class StateMachine : MonoBehaviour
 
                 case State.CheckingReward:
 
-             
-                AnimationBall ballPicked = objectToPickUpScript.ballPick.GetComponent<AnimationBall>();
-                ballPicked.StartAnimation();
-                if (ballPicked.isAnimationFinished == true)
+
+                ballPicked = objectToPickUpScript.ballPick;
+
+                animationBallScript.StartAnimation();
+                if (animationBallScript.isAnimationFinished == true)
                 {
+                    ballSpawnerScript.SpawnBall();
                     currentState = State.WaitingForCoin;
                 }
 

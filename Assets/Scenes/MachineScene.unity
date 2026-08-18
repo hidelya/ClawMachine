@@ -732,6 +732,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6493234338100993306, guid: 0a637d6b170a1734fad5da56ddd9c216, type: 3}
+    - {fileID: 8008508879607854376, guid: 0a637d6b170a1734fad5da56ddd9c216, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1403,9 +1404,11 @@ MonoBehaviour:
   currentState: 0
   movementScript: {fileID: 6419270}
   stretchingScript: {fileID: 6419273}
-  animationBallScript: {fileID: 0}
+  animationBallScript: {fileID: 1066065983}
   playerStatsScript: {fileID: 647787548}
   objectToPickUpScript: {fileID: 899837384}
+  ballSpawnerScript: {fileID: 1066065982}
+  ballPicked: {fileID: 0}
   buttonCoin: {fileID: 1479259727}
   bigButton: {fileID: 1858757571}
 --- !u!114 &647787548
@@ -2277,6 +2280,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1066065981}
+  - component: {fileID: 1066065982}
+  - component: {fileID: 1066065983}
   m_Layer: 0
   m_Name: Objects
   m_TagString: Untagged
@@ -2302,6 +2307,39 @@ Transform:
   - {fileID: 1016221537}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1066065982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066065979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40d1a2d2933ad0640bf1112b2b4ec9ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BallSpawner
+  ballPrefab: {fileID: 8985950701660481759, guid: 0a637d6b170a1734fad5da56ddd9c216, type: 3}
+  position: {x: 4, y: 8, z: 0}
+--- !u!114 &1066065983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066065979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb18fd8f2f82bea48bfcdd2fa538ae54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationBall
+  pince: {fileID: 899837379}
+  ControllerRail: {fileID: 6419268}
+  attachedBall: {fileID: 899837384}
+  speed: 1
+  center: {fileID: 1409609130}
+  stateMachineScript: {fileID: 647787547}
+  isAnimationFinished: 0
 --- !u!1 &1171036547
 GameObject:
   m_ObjectHideFlags: 0
