@@ -10,6 +10,7 @@ public class AnimationBall : MonoBehaviour
     [SerializeField] private float speed = 1f;
     [SerializeField] private GameObject center;
     [SerializeField] private StateMachine stateMachineScript;
+    [SerializeField] private PlayerStats playerStatsScript;
     public bool isAnimationFinished = false;
 
 
@@ -29,10 +30,12 @@ public class AnimationBall : MonoBehaviour
             // Position de la cible (centre)
             Debug.Log("Avant la coroutine");
             StartCoroutine(DeplacerVersCible(ciblePosition));
+            
             Debug.Log("Après la coroutine");
             StartCoroutine(DepopBall(attachedBall.ballPick));
             
-            
+
+
 
         }
         else
@@ -52,6 +55,7 @@ public class AnimationBall : MonoBehaviour
             yield return null;
         }
         isAnimationFinished = true;
+        
         yield return null;
 
         //attachedBall.ballPick.transform.position = ciblePosition;
@@ -64,6 +68,23 @@ public class AnimationBall : MonoBehaviour
         attachedBall.ballPick.SetActive(false);
         isAnimationFinished = true;
         Debug.Log("Animation finished, ball deactivated");
+
         
+    }
+
+    public void PriceBall(GameObject ballActuelle)
+    {
+        Color color = ballActuelle.GetComponent<Renderer>().material.color;
+        if (ballActuelle)
+        {
+            if (color == Color.blue)
+            {
+                playerStatsScript.AddCoins(10);
+            }
+            else if (color == Color.red)
+            {
+                playerStatsScript.AddCoins(50);
+            }
+        }
     }
 }

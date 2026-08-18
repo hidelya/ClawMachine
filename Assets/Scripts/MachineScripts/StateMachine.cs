@@ -14,6 +14,8 @@ public class StateMachine : MonoBehaviour
     [SerializeField] private GameObject buttonCoin;
     [SerializeField] private GameObject bigButton;
 
+    private bool isPricedBall = false;
+
     public enum State
     {
         WaitingForCoin,
@@ -74,9 +76,14 @@ public class StateMachine : MonoBehaviour
 
                 if (animationBallScript.isAnimationFinished == true)
                 {
+
+                    animationBallScript.PriceBall(ballPicked);
+
                     ballSpawnerScript.SpawnBall();
                     currentState = State.WaitingForCoin;
+                    
                 }
+                
 
 
                 break;
