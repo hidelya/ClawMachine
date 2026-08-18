@@ -5,7 +5,7 @@ public class PlayerStats : MonoBehaviour
 {
     [SerializeField] private GameObject buttonCoin;
     private int playerCoins { get; set; } = 500; 
-    private int lvlLuck { get; set; } = 1;
+    public int lvlLuck { get; set; } = 1;
 
     private int lvlPrice { get; set; } = 50;
 

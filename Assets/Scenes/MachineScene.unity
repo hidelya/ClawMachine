@@ -1408,7 +1408,6 @@ MonoBehaviour:
   playerStatsScript: {fileID: 647787548}
   objectToPickUpScript: {fileID: 899837384}
   ballSpawnerScript: {fileID: 1066065982}
-  ballPicked: {fileID: 0}
   buttonCoin: {fileID: 1479259727}
   bigButton: {fileID: 1858757571}
 --- !u!114 &647787548
@@ -2321,6 +2320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BallSpawner
   ballPrefab: {fileID: 8985950701660481759, guid: 0a637d6b170a1734fad5da56ddd9c216, type: 3}
   position: {x: 4, y: 8, z: 0}
+  playerStatsScript: {fileID: 647787548}
 --- !u!114 &1066065983
 MonoBehaviour:
   m_ObjectHideFlags: 0
