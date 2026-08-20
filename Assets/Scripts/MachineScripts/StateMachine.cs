@@ -9,6 +9,7 @@ public class StateMachine : MonoBehaviour
     [SerializeField] private PlayerStats playerStatsScript;
     [SerializeField] private ObjectToPickUp objectToPickUpScript;
     [SerializeField] private BallSpawner ballSpawnerScript;
+    [SerializeField] private Card cardScript;
 
     private GameObject ballPicked;
     [SerializeField] private GameObject buttonCoin;
@@ -36,9 +37,9 @@ public class StateMachine : MonoBehaviour
                 stretchingScript.isDown = false;
                 if (isFirstBallInstanciated == false)
                 {
-                    ballSpawnerScript.SpawnBall(new Vector3(-4, 1, 0));
-                    ballSpawnerScript.SpawnBall(new Vector3(0, 1, 0));
-                    ballSpawnerScript.SpawnBall(new Vector3(4, 1, 0));
+                    ballSpawnerScript.SpawnBall(new Vector3(-4, 3, 0));
+                    ballSpawnerScript.SpawnBall(new Vector3(0, 3, 0));
+                    ballSpawnerScript.SpawnBall(new Vector3(4, 3, 0));
 
                     isFirstBallInstanciated = true;
                 }
@@ -85,8 +86,9 @@ public class StateMachine : MonoBehaviour
                 if (animationBallScript.isAnimationFinished == true)
                 {
 
-                    animationBallScript.PriceBall(ballPicked);
+                    
                     ballSpawnerScript.SpawnBall();
+                    cardScript.SpawnCard();
                     currentState = State.WaitingForCoin;
 
                 }

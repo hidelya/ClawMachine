@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using TMPro.Examples;
 using UnityEngine;
 
 public class AnimationBall : MonoBehaviour
@@ -13,7 +15,12 @@ public class AnimationBall : MonoBehaviour
     [SerializeField] private PlayerStats playerStatsScript;
     public bool isAnimationFinished = false;
 
+    [SerializeField] private Vector3 position;
 
+    [SerializeField] private GameObject objectOnBallPrefab;
+    private List<GameObject> objectsList = new List<GameObject>();
+
+    
 
 
     public void StartAnimation()
@@ -30,61 +37,63 @@ public class AnimationBall : MonoBehaviour
             // Position de la cible (centre)
             Debug.Log("Avant la coroutine");
             StartCoroutine(DeplacerVersCible(ciblePosition));
-            
+
             Debug.Log("Après la coroutine");
-            StartCoroutine(DepopBall(attachedBall.ballPick));
+            StartCoroutine(Depop(attachedBall.ballPick));
             
-
-
-
+           
         }
         else
         {
             Debug.Log("No ball attached to the pince.");
         }
     }
+
+   
     IEnumerator DeplacerVersCible(Vector3 ciblePosition)
     {
 
         while (Vector3.Distance(attachedBall.ballPick.transform.position, ciblePosition) > 0.01f)
         {
+            attachedBall.ballPick.GetComponent<Collider2D>().enabled = false;
 
+            attachedBall.ballPick.layer = LayerMask.NameToLayer("UI");
             attachedBall.ballPick.transform.position = Vector3.MoveTowards(attachedBall.ballPick.transform.position, ciblePosition, speed * Time.deltaTime);
-            attachedBall.ballPick.transform.localScale = Vector3.MoveTowards(attachedBall.ballPick.transform.localScale, new Vector3(2,2,2), speed * Time.deltaTime);
+            attachedBall.ballPick.transform.localScale = Vector3.MoveTowards(attachedBall.ballPick.transform.localScale, new Vector3(2, 2, 2), speed * Time.deltaTime);
+            
 
             yield return null;
         }
         isAnimationFinished = true;
-        
+
         yield return null;
 
-        //attachedBall.ballPick.transform.position = ciblePosition;
+        attachedBall.ballPick.transform.position = ciblePosition;
+        attachedBall.ballPick.transform.localScale = new Vector3(2, 2, 2);
+        
 
     }
 
-    IEnumerator DepopBall(GameObject ballActuelle)
+    IEnumerator Depop(GameObject ballActuelle)
     {
         yield return new WaitForSeconds(1.5f);
         Destroy(ballActuelle);
-        isAnimationFinished = true;
+        
         Debug.Log("Animation finished, ball deactivated");
 
-        
+
     }
 
-    public void PriceBall(GameObject ballActuelle)
+    
+
+    public void ObjectOpen()
     {
-        Color color = ballActuelle.GetComponentInChildren<Renderer>().material.color;
-        if (ballActuelle)
-        {
-            if (color == Color.blue)
-            {
-                playerStatsScript.AddCoins(10);
-            }
-            else if (color == Color.red)
-            {
-                playerStatsScript.AddCoins(50);
-            }
-        }
+        
+            Debug.Log("Boucle while");
+            GameObject newObject = Instantiate(objectOnBallPrefab, position, Quaternion.identity);
+            objectsList.Add(objectOnBallPrefab);
+            //objectSpawn = true;
     }
+
+    
 }
