@@ -7,9 +7,11 @@ public class MovementPince : MonoBehaviour
     [SerializeField] private GameObject leftButton;
     [SerializeField] private GameObject rightButton;
     [SerializeField] private GameObject pince;
-    [SerializeField] private float speed = 5f;
+    public float speed { get; set; } = 2f;
     [SerializeField] private float minX = -8f;
     [SerializeField] private float maxX = 8f;
+
+
 
 
     private void Update()
@@ -45,4 +47,5 @@ public class MovementPince : MonoBehaviour
 
     }
 
+    
 }

@@ -2,16 +2,16 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class stretchingPince : MonoBehaviour
+public class StretchingPince : MonoBehaviour
 {
-    
+
 
     [SerializeField] private GameObject controllerRail;
     [SerializeField] private GameObject pince;
     [SerializeField] private LineRenderer lineRenderer;
 
     [SerializeField] private float descenteMax = 5f;
-    [SerializeField] private float descenteSpeed = 5f;
+    public float descenteSpeed { get; set;} = 2f;
 
 
     [SerializeField] private GameObject leftButton;

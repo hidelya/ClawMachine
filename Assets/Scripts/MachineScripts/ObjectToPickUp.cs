@@ -7,6 +7,9 @@ public class ObjectToPickUp : MonoBehaviour // script attaché à la pince pour at
     [SerializeField] private FixedJoint2D joint;
     public GameObject ballPick;
     [SerializeField] private StateMachine stateMachineScript;
+    [SerializeField] Quaternion rotationObj;
+    [SerializeField] private GameObject anchor;
+
 
     private void OnCollisionEnter2D(Collision2D collision) 
     {
@@ -14,8 +17,8 @@ public class ObjectToPickUp : MonoBehaviour // script attaché à la pince pour at
         if (collision.gameObject.CompareTag("Ball") && isAttached == false)
         {
             Debug.Log("Touche la pince");
-            Attached(collision);
             ballPick = collision.gameObject;
+            Attached(collision);
         }
         else
         {
@@ -25,7 +28,7 @@ public class ObjectToPickUp : MonoBehaviour // script attaché à la pince pour at
 
     private void Attached(Collision2D collision)
     {
-
+        
         joint.enabled = true;
         joint.connectedBody = collision.rigidbody;
         isAttached = true;

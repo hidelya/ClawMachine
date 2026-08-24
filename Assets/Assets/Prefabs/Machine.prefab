@@ -45,16 +45,20 @@ PrefabInstance:
       value: ClawMachineBase
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: f15891526700e4742aea9b8598a2c1ca, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: f15891526700e4742aea9b8598a2c1ca, type: 3}
       propertyPath: m_Color.b
-      value: 0.9924528
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: f15891526700e4742aea9b8598a2c1ca, type: 3}
       propertyPath: m_Color.g
-      value: 0.080519676
+      value: 0.65882355
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: f15891526700e4742aea9b8598a2c1ca, type: 3}
       propertyPath: m_Color.r
-      value: 0.9238327
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: f15891526700e4742aea9b8598a2c1ca, type: 3}
       propertyPath: m_LocalScale.x

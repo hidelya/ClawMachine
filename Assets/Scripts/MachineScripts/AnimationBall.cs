@@ -8,7 +8,7 @@ public class AnimationBall : MonoBehaviour
     [SerializeField] private GameObject pince;
     [SerializeField] private GameObject ControllerRail;
     public ObjectToPickUp attachedBall;
-    private stretchingPince scriptStretchingPince;
+    private StretchingPince scriptStretchingPince;
     [SerializeField] private float speed = 1f;
     [SerializeField] private GameObject center;
     [SerializeField] private StateMachine stateMachineScript;
@@ -27,7 +27,7 @@ public class AnimationBall : MonoBehaviour
     {
         isAnimationFinished = false;
         attachedBall = pince.GetComponent<ObjectToPickUp>(); // Balle attaché à la pince
-        scriptStretchingPince = ControllerRail.GetComponent<stretchingPince>();
+        scriptStretchingPince = ControllerRail.GetComponent<StretchingPince>();
         Vector3 ciblePosition = center.transform.position;
         if (attachedBall.ballPick != null && !isAnimationFinished)
         {

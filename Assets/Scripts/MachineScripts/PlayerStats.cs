@@ -4,14 +4,26 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     [SerializeField] private GameObject buttonCoin;
-    private int playerCoins { get; set; } = 500; 
+    private int playerCoins { get; set; } = 1000; 
     public int lvlLuck { get; set; } = 1;
+    private int luckPrice { get; set; } = 50;
+    private int lvlSpeed { get; set; } = 1;
+    private int speedPrice { get; set; } = 200;
+     
 
-    private int lvlPrice { get; set; } = 50;
+    [SerializeField] MovementPince movementPinceScript;
+    [SerializeField] StretchingPince stretchingPinceScript; 
+
+    
+    
 
     [SerializeField] private TextMeshProUGUI coinText;
     
-    [SerializeField] TextMeshProUGUI textLuck;
+    [SerializeField] private TextMeshProUGUI textLuck;
+
+    [SerializeField] private TextMeshProUGUI textSpeed;
+    [SerializeField] private TextMeshProUGUI priceSpeedText;
+    [SerializeField] private TextMeshProUGUI priceLuckText;
 
     public void AddCoins(int amount)
     {
@@ -36,22 +48,25 @@ public class PlayerStats : MonoBehaviour
 
     public void AddLuck()
     {
-        if (playerCoins >= lvlPrice)
+        if (playerCoins >= luckPrice)
         {
 
             switch (lvlLuck) 
             {
                 case 1:
                     lvlLuck += 1;
+                    luckPrice = 200;
                     textLuck.text = "Luck level " + lvlLuck.ToString();
-                    RemoveCoins(lvlPrice);
+                    priceLuckText.text = luckPrice.ToString() + "$" ;
+                    RemoveCoins(luckPrice);
                     break;
 
                 case 2:
                     lvlLuck += 1;
-                    lvlPrice = 200;
+                    luckPrice *= 3;
                     textLuck.text = "Luck level " + lvlLuck.ToString();
-                    RemoveCoins(lvlPrice);
+                    priceLuckText.text = luckPrice.ToString() + "$";
+                    RemoveCoins(luckPrice);
                     break;
 
                 default:
@@ -60,5 +75,71 @@ public class PlayerStats : MonoBehaviour
             }
 
         }
+    }
+
+    public void SpeedLvl()
+    {
+        if (playerCoins >= speedPrice)
+        {
+
+            switch (lvlSpeed)
+            {
+                case 1:
+                    lvlSpeed += 1;
+                    speedPrice *= 2;
+                    movementPinceScript.speed *= 1.5f;
+                    stretchingPinceScript.descenteSpeed *= 1.5f;
+                    RemoveCoins(speedPrice);
+                    textSpeed.text = "Speed level " + lvlSpeed.ToString();
+                    priceSpeedText.text = speedPrice.ToString() + "$";
+                    break;
+
+                case 2:
+                    lvlSpeed += 1;
+                    speedPrice *= 3;
+                    movementPinceScript.speed *= 1.5f;
+                    stretchingPinceScript.descenteSpeed *= 1.5f;
+                    RemoveCoins(speedPrice);
+                    textSpeed.text = "Speed level " + lvlSpeed.ToString();
+                    priceSpeedText.text = speedPrice.ToString() + "$";
+                    break;
+
+                case 3:
+                    lvlSpeed += 1;
+                    speedPrice *= 4;
+                    movementPinceScript.speed *= 1.5f;
+                    stretchingPinceScript.descenteSpeed *= 1.5f;
+                    RemoveCoins(speedPrice);
+                    textSpeed.text = "Speed level " + lvlSpeed.ToString();
+                    priceSpeedText.text = speedPrice.ToString() + "$";
+                    break;
+
+                case 4:
+                    lvlSpeed += 1;
+                    speedPrice *= 5;
+                    movementPinceScript.speed *= 1.5f;
+                    stretchingPinceScript.descenteSpeed *= 1.5f;
+                    RemoveCoins(speedPrice);
+                    textSpeed.text = "Speed level " + lvlSpeed.ToString();
+                    priceSpeedText.text = speedPrice.ToString() + "$";
+                    break;
+
+                case 5:
+                    lvlSpeed += 1;
+                    speedPrice *= 6;
+                    movementPinceScript.speed *= 1.5f;
+                    stretchingPinceScript.descenteSpeed *= 1.5f;
+                    RemoveCoins(speedPrice);
+                    textSpeed.text = "Speed level " + lvlSpeed.ToString();
+                    priceSpeedText.text = speedPrice.ToString() + "$";
+                    break;
+
+                default:
+                    Debug.Log("Aucun niveau trouvé");
+                    break;
+            }
+
+        }
+        
     }
 }
