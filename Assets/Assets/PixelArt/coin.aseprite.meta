@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 41503ea1699ded8408fcbe2dc0f48ab5
+guid: b820262166db6d04baf431f6d22029f8
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -125,7 +125,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: BlackCat
+  - name: coin
     originalName: 
     pivot: {x: 0.5, y: -0.033333335}
     alignment: 9
@@ -137,7 +137,7 @@ ScriptedImporter:
       y: 4
       width: 30
       height: 30
-    spriteID: 224e57ec2e0259f4e8657d8b182419db
+    spriteID: a39d1d081dcdcae45917c63ab828d86d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -151,17 +151,17 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 148827901
+      value0: 1367190883
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: BlackCat
+    name: coin
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: BlackCatSecret
+    - name: coin
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -169,7 +169,7 @@ ScriptedImporter:
         y: 1
         width: 30
         height: 30
-      spriteId: 224e57ec2e0259f4e8657d8b182419db
+      spriteId: a39d1d081dcdcae45917c63ab828d86d
     linkedCells: []
     tileCells: []
     tileSetIndex: 0

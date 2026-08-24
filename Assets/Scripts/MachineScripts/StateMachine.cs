@@ -10,7 +10,7 @@ public class StateMachine : MonoBehaviour
     [SerializeField] private ObjectToPickUp objectToPickUpScript;
     [SerializeField] private BallSpawner ballSpawnerScript;
     [SerializeField] private Card cardScript;
-
+    [SerializeField] private CoinAnim coinAnimScript;
     private GameObject ballPicked;
     [SerializeField] private GameObject buttonCoin;
     [SerializeField] private GameObject bigButton;
@@ -47,6 +47,7 @@ public class StateMachine : MonoBehaviour
 
                 if (buttonCoin.GetComponent<ButtonState>().IsPressed)
                 {
+                    coinAnimScript.AnimCoin();
                     Debug.Log("Coin inserted, moving to Moving state");
                     playerStatsScript.RemoveCoins(1);
                     currentState = State.Moving;
