@@ -9,7 +9,7 @@ public class Card : MonoBehaviour
     [SerializeField] private List<GameObject> listObject = new List<GameObject>();
     [SerializeField] private Vector3 localisationObject;
     private GameObject objectDrawn;
-    private int nbrList;
+    public int nbrList { get; set; }
 
     public void SpawnCard()
     {
@@ -27,8 +27,14 @@ public class Card : MonoBehaviour
             objectDrawn = Instantiate(listObject[nbrList]);
              
             objectDrawn.transform.position = localisationObject;
+            
         }
 
+    }
+
+    public GameObject ObjectDrawned()
+    {
+        return objectDrawn;
     }
 
     public void PriceObject()
