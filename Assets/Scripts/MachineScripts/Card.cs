@@ -6,10 +6,22 @@ public class Card : MonoBehaviour
 {
     [SerializeField] private PlayerStats playerStatsScript;
     [SerializeField] private GameObject card;
-    [SerializeField] private List<GameObject> listObject = new List<GameObject>();
+    //[SerializeField] private List<GameObject> listObject = new List<GameObject>();
+    [SerializeField] private List <GameObject> listCommunObjects = new List<GameObject>();
+    [SerializeField] private List <GameObject> listRareObjects = new List<GameObject>();
+    [SerializeField] private List <GameObject> listLegendObjects = new List<GameObject>();
+
+
     [SerializeField] private Vector3 localisationObject;
     private GameObject objectDrawn;
-    public int nbrList { get; set; }
+
+    public int tauxCommun =100;
+    public int tauxRare=20;
+    public int tauxLegend=5;
+    public int nbrListCommun { get; set; }
+    public int nbrListRare { get; set; }
+    public int nbrListLegend { get; set; }
+
 
     public void SpawnCard()
     {
@@ -20,35 +32,138 @@ public class Card : MonoBehaviour
 
     public void RandomObject()
     {
-        
-        if (listObject.Count > 0)
+        RaretyObject();
+        int rarety = Random.Range(0, 100);
+        if (rarety < tauxLegend)
         {
-            nbrList = Random.Range(0, listObject.Count);
-            objectDrawn = Instantiate(listObject[nbrList]);
-             
+            nbrListLegend = Random.Range(0, listLegendObjects.Count);
+            objectDrawn = Instantiate(listLegendObjects[nbrListLegend]);
+
             objectDrawn.transform.position = localisationObject;
-            
+            nbrListCommun = 999;
+            nbrListRare = 999;
+        }
+        
+        else if (rarety < tauxRare)
+        {
+            nbrListRare = Random.Range(0, listRareObjects.Count);
+            objectDrawn = Instantiate(listRareObjects[nbrListRare]);
+            objectDrawn.transform.position = localisationObject;
+            nbrListCommun = 999;
+            nbrListLegend = 999;
+        }
+        else if (rarety < tauxCommun)
+        {
+            nbrListCommun = Random.Range(0, listCommunObjects.Count);
+            objectDrawn = Instantiate(listCommunObjects[nbrListCommun]);
+            objectDrawn.transform.position = localisationObject;
+            nbrListLegend = 999;
+            nbrListRare = 999;
         }
 
+
+        //    if (listObject.Count > 0)
+        //{
+        //    nbrList = Random.Range(0, listObject.Count);
+        //    objectDrawn = Instantiate(listObject[nbrList]);
+        //    objectDrawn.transform.position = localisationObject;
+
+
+        //}
+
     }
 
-    public GameObject ObjectDrawned()
+    public void RaretyObject()
     {
-        return objectDrawn;
+        
+        switch (playerStatsScript.lvlLuck)
+        {
+            case 1:
+                tauxCommun = 100;
+                tauxRare = 50;
+                tauxLegend = 5;
+                break;
+            case 2:
+                tauxCommun = 100;
+                tauxRare = 60;
+                tauxLegend = 10;
+                break;
+            case 3:
+                tauxCommun = 100;
+                tauxRare = 70;
+                tauxLegend = 40;
+                break;
+            case 4:
+                tauxCommun = 100;
+                tauxRare = 70;
+                tauxLegend = 60;
+                break;
+            case 5:
+                tauxCommun = 100;
+                tauxRare = 90;
+                tauxLegend = 80;
+                break;
+        }
+        
     }
+  
+
+
 
     public void PriceObject()
     {
         if (objectDrawn)
         {
              
-            switch (nbrList)
+            switch (nbrListCommun)
             {
                 case 0:
                     playerStatsScript.AddCoins(10);
                     break;
                 case 1:
                     playerStatsScript.AddCoins(15);
+                    break;
+                case 2:
+                    playerStatsScript.AddCoins(18);
+                    break;
+                case 3:
+                    playerStatsScript.AddCoins(12);
+                    break;
+                default:
+                    Debug.Log("N'est pas dans la liste des objets"); 
+                    break;
+            }
+            switch (nbrListRare)
+            {
+                case 0:
+                    playerStatsScript.AddCoins(50);
+                    break;
+                case 1:
+                    playerStatsScript.AddCoins(70);
+                    break;
+                case 2:
+                    playerStatsScript.AddCoins(65);
+                    break;
+                case 3:
+                    playerStatsScript.AddCoins(55);
+                    break;
+                default:
+                    Debug.Log("N'est pas dans la liste des objets"); 
+                    break;
+            }
+            switch (nbrListLegend)
+            {
+                case 0:
+                    playerStatsScript.AddCoins(200);
+                    break;
+                case 1:
+                    playerStatsScript.AddCoins(150);
+                    break;
+                case 2:
+                    playerStatsScript.AddCoins(120);
+                    break;
+                case 3:
+                    playerStatsScript.AddCoins(140);
                     break;
                 default:
                     Debug.Log("N'est pas dans la liste des objets"); 
@@ -65,7 +180,10 @@ public class Card : MonoBehaviour
         card.SetActive(false);
     }
 
-    
+
+ 
+
+
 
 
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     [SerializeField] private GameObject buttonCoin;
-    private int playerCoins { get; set; } = 1000; 
+    private int playerCoins { get; set; } = 10; 
     public int lvlLuck { get; set; } = 1;
     private int luckPrice { get; set; } = 50;
     private int lvlSpeed { get; set; } = 1;

@@ -4,14 +4,15 @@ using UnityEngine;
 public class CoinAnim : MonoBehaviour
 {
     [SerializeField] GameObject coin;
+    [SerializeField] AudioSource coinInsert;
     //[SerializeField] float speed;
     //[SerializeField] float positionx;
 
     public void AnimCoin()
     {
         coin.SetActive(true);
+        coinInsert.Play();
         StartCoroutine(StopAnimCoin(coin));
-
     }
 
     IEnumerator StopAnimCoin(GameObject coin)
