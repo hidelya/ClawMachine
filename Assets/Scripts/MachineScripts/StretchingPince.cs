@@ -23,12 +23,14 @@ public class StretchingPince : MonoBehaviour
     private float initialPincePosition;
 
     public bool isDown = false;
+    public bool isUp = true;
 
     public void Update()
     {
-        if (bigButton.GetComponent<ButtonState>().IsPressed)
+        if (bigButton.GetComponent<ButtonState>().IsPressed && isUp)
         {
             StartDescente();
+            isUp = false;
         }
         
     }
@@ -70,11 +72,7 @@ public class StretchingPince : MonoBehaviour
         //rightButton.GetComponent<ButtonState>().enabled = true;
         lineRenderer.enabled = false;
         isDown = true;
-
-        
-
-
-
+        isUp = true;
     }
 
 }

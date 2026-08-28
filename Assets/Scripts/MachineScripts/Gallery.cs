@@ -4,9 +4,17 @@ using UnityEngine;
 public class Gallery : MonoBehaviour
 {
     [SerializeField] GameObject gallery;
+    [SerializeField] StateMachine stateMachineScript;
     public void OpenGallery()
     {
-        gallery.SetActive(true);
+        if (stateMachineScript.currentState == StateMachine.State.Grabbing || stateMachineScript.currentState == StateMachine.State.WaitChoice)
+        {
+
+        }
+        else 
+        { 
+            gallery.SetActive(true);
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D collider2D)
