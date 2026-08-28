@@ -10,6 +10,7 @@ public class BallSpawner : MonoBehaviour
     [SerializeField] private GameObject ballPrefab;
     [SerializeField] private Vector3 position;
     [SerializeField] private PlayerStats playerStatsScript;
+
     
 
     public void SpawnBall()
@@ -28,14 +29,15 @@ public class BallSpawner : MonoBehaviour
 
         spawnedBalls.Add(newBall);
         RandomColor(newBall);
+        
     }
 
     public void RandomColor(GameObject ball)
     {
         float pourcentRarety = 0.95f;
-        switch (playerStatsScript.lvlLuck) 
+        switch (playerStatsScript.lvlLuck)
         {
-           case 1:
+            case 1:
                 pourcentRarety = 0.95f;
                 break;
             case 2:
@@ -53,6 +55,7 @@ public class BallSpawner : MonoBehaviour
         }
         Color colorRarety = Random.value < pourcentRarety ? Color.blue : Color.red;
         ball.GetComponentInChildren<Renderer>().material.color = colorRarety;
+       
 
 
     }

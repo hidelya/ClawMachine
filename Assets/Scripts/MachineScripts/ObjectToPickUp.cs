@@ -38,5 +38,21 @@ public class ObjectToPickUp : MonoBehaviour // script attaché à la pince pour at
 
     }
 
+    public int MultiplicatorColor()
+    {
+      
+        Color ballColor = ballPick.GetComponentInChildren<Renderer>().material.color;
+        if (ballColor == Color.blue)
+        {
+            return 1;
+        }
+        else if (ballColor == Color.red)
+        {
+            return 2;
+        }
+    
+        return 1;
+    }
+
    
 }

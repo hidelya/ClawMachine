@@ -6,6 +6,7 @@ public class Card : MonoBehaviour
 {
     [SerializeField] private PlayerStats playerStatsScript;
     [SerializeField] private HaloManager haloScript;
+    [SerializeField] private ObjectToPickUp objectToPickUpScript;
     [SerializeField] private GameObject card;
     //[SerializeField] private List<GameObject> listObject = new List<GameObject>();
     [SerializeField] private List <GameObject> listCommunObjects = new List<GameObject>();
@@ -24,7 +25,7 @@ public class Card : MonoBehaviour
     public int nbrListRare { get; set; }
     public int nbrListLegend { get; set; }
 
-
+    
     public void SpawnCard()
     {
         Debug.Log("slt");
@@ -116,22 +117,23 @@ public class Card : MonoBehaviour
 
     public void PriceObject()
     {
+        int multiplicator = objectToPickUpScript.MultiplicatorColor();
         if (objectDrawn)
         {
              
             switch (nbrListCommun)
             {
                 case 0:
-                    playerStatsScript.AddCoins(10);
+                    playerStatsScript.AddCoins(10, multiplicator);
                     break;
                 case 1:
-                    playerStatsScript.AddCoins(15);
+                    playerStatsScript.AddCoins(15, multiplicator);
                     break;
                 case 2:
-                    playerStatsScript.AddCoins(18);
+                    playerStatsScript.AddCoins(18, multiplicator);
                     break;
                 case 3:
-                    playerStatsScript.AddCoins(12);
+                    playerStatsScript.AddCoins(12, multiplicator);
                     break;
                 default:
                     Debug.Log("N'est pas dans la liste des objets"); 
@@ -140,16 +142,16 @@ public class Card : MonoBehaviour
             switch (nbrListRare)
             {
                 case 0:
-                    playerStatsScript.AddCoins(50);
+                    playerStatsScript.AddCoins(50, multiplicator);
                     break;
                 case 1:
-                    playerStatsScript.AddCoins(70);
+                    playerStatsScript.AddCoins(70, multiplicator);
                     break;
                 case 2:
-                    playerStatsScript.AddCoins(65);
+                    playerStatsScript.AddCoins(65, multiplicator);
                     break;
                 case 3:
-                    playerStatsScript.AddCoins(55);
+                    playerStatsScript.AddCoins(55, multiplicator);
                     break;
                 default:
                     Debug.Log("N'est pas dans la liste des objets"); 
@@ -158,16 +160,16 @@ public class Card : MonoBehaviour
             switch (nbrListLegend)
             {
                 case 0:
-                    playerStatsScript.AddCoins(200);
+                    playerStatsScript.AddCoins(200, multiplicator);
                     break;
                 case 1:
-                    playerStatsScript.AddCoins(150);
+                    playerStatsScript.AddCoins(150, multiplicator);
                     break;
                 case 2:
-                    playerStatsScript.AddCoins(120);
+                    playerStatsScript.AddCoins(120, multiplicator);
                     break;
                 case 3:
-                    playerStatsScript.AddCoins(140);
+                    playerStatsScript.AddCoins(140, multiplicator);
                     break;
                 default:
                     Debug.Log("N'est pas dans la liste des objets"); 

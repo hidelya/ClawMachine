@@ -25,16 +25,16 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private TextMeshProUGUI priceSpeedText;
     [SerializeField] private TextMeshProUGUI priceLuckText;
 
-    public void AddCoins(int amount)
-    {
-        playerCoins += amount;
-        coinText.text = playerCoins.ToString() + " Coins";
-    }
     public void AddCoins(int amount, int multiplicator)
     {
         playerCoins += amount * multiplicator;
         coinText.text = playerCoins.ToString() + " Coins";
     }
+    //public void AddCoins(int amount, int multiplicator)
+    //{
+    //    playerCoins += amount * multiplicator;
+    //    coinText.text = playerCoins.ToString() + " Coins";
+    //}
 
     public void RemoveCoins(int amount)
     {

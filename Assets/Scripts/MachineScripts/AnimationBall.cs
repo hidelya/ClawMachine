@@ -39,7 +39,7 @@ public class AnimationBall : MonoBehaviour
             StartCoroutine(DeplacerVersCible(ciblePosition));
 
             Debug.Log("Après la coroutine");
-            StartCoroutine(Depop(attachedBall.ballPick));
+            
             
            
         }
@@ -74,10 +74,9 @@ public class AnimationBall : MonoBehaviour
 
     }
 
-    IEnumerator Depop(GameObject ballActuelle)
+    public void Depop()
     {
-        yield return new WaitForSeconds(1.5f);
-        Destroy(ballActuelle);
+        Destroy(attachedBall.ballPick);
         
         Debug.Log("Animation finished, ball deactivated");
 
