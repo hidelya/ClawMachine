@@ -9,6 +9,7 @@ public class StateMachine : MonoBehaviour
     [SerializeField] private PlayerStats playerStatsScript;
     [SerializeField] private ObjectToPickUp objectToPickUpScript;
     [SerializeField] private BallSpawner ballSpawnerScript;
+    [SerializeField] private CameraEffect cameraEffectScript;
     [SerializeField] private Card cardScript;
     [SerializeField] private CoinAnim coinAnimScript;
     private GameObject ballPicked;
@@ -22,7 +23,8 @@ public class StateMachine : MonoBehaviour
         WaitingForCoin,
         Moving,
         Grabbing,
-        CheckingReward
+        CheckingReward,
+        WaitChoice
     }
 
     public void Update()
@@ -31,6 +33,7 @@ public class StateMachine : MonoBehaviour
         {
             case State.WaitingForCoin:
 
+                cameraEffectScript.DezoomCamera();
                 movementScript.enabled = false;
                 stretchingScript.enabled = false;
                 objectToPickUpScript.isAttached = false;
@@ -63,7 +66,7 @@ public class StateMachine : MonoBehaviour
                 if (bigButton.GetComponent<ButtonState>().IsPressed)
                 {
                     currentState = State.Grabbing;
-                    stretchingScript.StartDescente();
+                    //stretchingScript.StartDescente();
                 }
 
                 break;
@@ -82,11 +85,21 @@ public class StateMachine : MonoBehaviour
 
                 ballPicked = objectToPickUpScript.ballPick;
                 animationBallScript.StartAnimation();
+                cameraEffectScript.ZoomCamera();
 
                 if (animationBallScript.isAnimationFinished == true)
                 {
                     ballSpawnerScript.SpawnBall();
                     cardScript.SpawnCard();
+                    currentState = State.WaitChoice;
+                }
+                
+                break;
+
+            case State.WaitChoice:
+
+                if (cardScript.cardIsActived == false)
+                {
                     currentState = State.WaitingForCoin;
                 }
                 break;

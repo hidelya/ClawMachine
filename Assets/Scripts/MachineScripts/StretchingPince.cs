@@ -24,11 +24,20 @@ public class StretchingPince : MonoBehaviour
 
     public bool isDown = false;
 
+    public void Update()
+    {
+        if (bigButton.GetComponent<ButtonState>().IsPressed)
+        {
+            StartDescente();
+        }
+        
+    }
     public void StartDescente()
     {
         isDown = false;
         initialPincePosition = pince.transform.position.y;
         lineRenderer.enabled = true;
+        
         StartCoroutine(DescenteCoroutine());
     }
 

@@ -5,12 +5,14 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
     [SerializeField] private PlayerStats playerStatsScript;
+    [SerializeField] private HaloManager haloScript;
     [SerializeField] private GameObject card;
     //[SerializeField] private List<GameObject> listObject = new List<GameObject>();
     [SerializeField] private List <GameObject> listCommunObjects = new List<GameObject>();
     [SerializeField] private List <GameObject> listRareObjects = new List<GameObject>();
     [SerializeField] private List <GameObject> listLegendObjects = new List<GameObject>();
 
+    public bool cardIsActived = true;
 
     [SerializeField] private Vector3 localisationObject;
     private GameObject objectDrawn;
@@ -28,6 +30,8 @@ public class Card : MonoBehaviour
         Debug.Log("slt");
         card.SetActive(true);
         RandomObject();
+        cardIsActived=true;
+        
     }
 
     public void RandomObject()
@@ -80,22 +84,22 @@ public class Card : MonoBehaviour
         {
             case 1:
                 tauxCommun = 100;
-                tauxRare = 50;
+                tauxRare = 20;
                 tauxLegend = 5;
                 break;
             case 2:
                 tauxCommun = 100;
-                tauxRare = 60;
+                tauxRare = 40;
                 tauxLegend = 10;
                 break;
             case 3:
                 tauxCommun = 100;
-                tauxRare = 70;
+                tauxRare = 60;
                 tauxLegend = 40;
                 break;
             case 4:
                 tauxCommun = 100;
-                tauxRare = 70;
+                tauxRare = 80;
                 tauxLegend = 60;
                 break;
             case 5:
@@ -178,6 +182,8 @@ public class Card : MonoBehaviour
     {
         Destroy(objectDrawn);
         card.SetActive(false);
+        cardIsActived = false;
+        
     }
 
 

@@ -54,6 +54,7 @@ public class BallSpawner : MonoBehaviour
         Color colorRarety = Random.value < pourcentRarety ? Color.blue : Color.red;
         ball.GetComponentInChildren<Renderer>().material.color = colorRarety;
 
+
     }
 
     IEnumerator AddTag(GameObject newBall)
