@@ -13,6 +13,7 @@ public class StateMachine : MonoBehaviour
     [SerializeField] private Card cardScript;
     [SerializeField] private CoinAnim coinAnimScript;
     [SerializeField] private Gallery galleryScript;
+    [SerializeField] private Option optionScript;
     private GameObject ballPicked;
     [SerializeField] private GameObject buttonCoin;
     [SerializeField] private GameObject bigButton;
@@ -25,7 +26,8 @@ public class StateMachine : MonoBehaviour
         Moving,
         Grabbing,
         CheckingReward,
-        WaitChoice
+        WaitChoice,
+        InOption
     }
 
     public void Update()
@@ -76,7 +78,7 @@ public class StateMachine : MonoBehaviour
                 break;
 
             case State.Grabbing:
-
+                optionScript.enabled = false;
                 galleryScript.enabled = false;
                 movementScript.enabled = false;
                 if (stretchingScript.isDown == true)
@@ -87,7 +89,7 @@ public class StateMachine : MonoBehaviour
                 break;
 
             case State.CheckingReward:
-
+                optionScript.enabled = false;
                 ballPicked = objectToPickUpScript.ballPick;
                 animationBallScript.StartAnimation();
                 cameraEffectScript.ZoomCamera();
@@ -104,10 +106,18 @@ public class StateMachine : MonoBehaviour
             case State.WaitChoice:
                 movementScript.enabled = false;
                 stretchingScript.enabled = false;
+                optionScript.enabled = false;
                 if (cardScript.cardIsActived == false)
                 {
                     currentState = State.WaitingForCoin;
                 }
+                break;
+
+            case State.InOption:
+                movementScript.enabled = false;
+                stretchingScript.enabled = false;
+                galleryScript.enabled = false;
+                objectToPickUpScript.enabled = false;
                 break;
         }
     }

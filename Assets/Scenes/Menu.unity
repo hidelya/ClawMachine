@@ -812,6 +812,7 @@ MonoBehaviour:
   bigButton: {fileID: 2068149674}
   stateMachine: {fileID: 0}
   isDown: 0
+  isUp: 1
 --- !u!1001 &1104679424
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,32 +1,32 @@
-using NUnit.Framework;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class HaloManager : MonoBehaviour
-{
-    [SerializeField] GameObject haloYellow;
-    [SerializeField] GameObject haloBlue;
+//using System.Collections.Generic;
+//using UnityEngine;
 
-    public void ActivateHaloYellow()
-    {
-        
-        haloYellow.SetActive(true);
-        
-    }
+//public class HaloManager : MonoBehaviour
+//{
+//    [SerializeField] GameObject haloYellow;
+//    [SerializeField] GameObject haloBlue;
 
-    public void DeactivateHaloYellow(List rarete) 
-    {
-        haloYellow.SetActive(false);
-    }
-    public void ActivateHaloBlue()
-    {
+//    public void ActivateHaloYellow()
+//    {
         
-        haloBlue.SetActive(true);
+//        haloYellow.SetActive(true);
         
-    }
+//    }
 
-    public void DeactivateHaloBlue(List rarete) 
-    {
-        haloBlue.SetActive(false);
-    }
-}
+//    public void DeactivateHaloYellow(List rarete) 
+//    {
+//        haloYellow.SetActive(false);
+//    }
+//    public void ActivateHaloBlue()
+//    {
+        
+//        haloBlue.SetActive(true);
+        
+//    }
+
+//    public void DeactivateHaloBlue(List rarete) 
+//    {
+//        haloBlue.SetActive(false);
+//    }
+//}

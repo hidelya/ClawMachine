@@ -1,11 +1,11 @@
-using NUnit.Framework;
+
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Card : MonoBehaviour
 {
     [SerializeField] private PlayerStats playerStatsScript;
-    [SerializeField] private HaloManager haloScript;
+    //[SerializeField] private HaloManager haloScript;
     [SerializeField] private ObjectToPickUp objectToPickUpScript;
     [SerializeField] private GameObject card;
     //[SerializeField] private List<GameObject> listObject = new List<GameObject>();
